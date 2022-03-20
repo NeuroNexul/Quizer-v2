@@ -1,0 +1,32 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+}
+
+html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      font-family: system-ui;
+      background-color: #202225;
+      color: #fff;
+      user-select: none;
+      min-width: 300px;
+}
+
+#root {
+      width: 100%;
+      height: 100%;
+      position: relative;
+}
+
+.scrollbar-track {
+      background-color: #202225 !important;
+      border-radius: 8px;
+}
+
+.scrollbar-thumb {
+      background-color: black !important;
+}

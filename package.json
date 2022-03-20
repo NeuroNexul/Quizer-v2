@@ -1,0 +1,36 @@
+{
+  "name": "quizer",
+  "version": "1.0.0",
+  "description": "A premium discord bot for hosting and managing quizes automatically and punctually",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "concurrently \"nodemon main.js\" \"cd public && yarn start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/*"
+    ]
+  },
+  "author": "CodeWithArif",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^0.3.0",
+    "axios": "^0.26.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "chalk": "4.1.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "discord-api-types": "^0.29.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

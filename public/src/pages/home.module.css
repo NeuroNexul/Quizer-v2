@@ -1,0 +1,199 @@
+.canvas {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+}
+
+.container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: auto;
+      z-index: 1;
+}
+
+.head {
+      height: 50px;
+      width: 100%;
+      position: absolute;
+      padding-left: 20px;
+      transform: translateY(20px);
+}
+
+.head img {
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+}
+
+.head h2 {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+}
+
+.ProfileButton {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 50%;
+      vertical-align: middle;
+      position: relative;
+      right: 0;
+      left: calc(100% - 230px);
+      cursor: pointer;
+}
+
+.main {
+      width: 100%;
+      height: calc(100% - 70px);
+      position: relative;
+      top: 70px;
+      padding: 20px;
+      overflow: auto;
+}
+
+.profileHolder {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      background-color: #000000a8;
+}
+
+.profile {
+      width: 100%;
+      max-width: 350px;
+      background-color: #18191c;
+      border-radius: 10px;
+      overflow: hidden;
+}
+
+.profile .dpHolder {
+      width: 100%;
+      position: relative;
+}
+
+.profile .dpHolder .banner {
+      width: 100%;
+      height: 60px;
+}
+
+.profile .dp {
+      width: 80px;
+      height: 80px;
+      border: 6px solid #18191c;
+      border-radius: 50%;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+}
+
+.profile .data {
+      padding: 16px;
+      padding-top: 30px;
+}
+
+.profile .data .username {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 2;
+}
+
+.profile .data .username .discriminator {
+      color: #b9bbbe;
+}
+
+.profile .data .fields {
+      font-size: 16px;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+}
+
+.profile .data .fields span {
+      color: #b9bbbe;
+}
+
+
+.actionBar {
+      width: 100%;
+      max-width: 1000px;
+      height: 50px;
+      position: relative;
+      background-color: #0000004d;
+      border-radius: 8px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+}
+
+.actionBar .action {
+      height: 100%;
+      width: auto;
+      display: inline-block;
+      line-height: 50px;
+      padding: 0 10px;
+}
+
+.actionBar .action span {
+      padding: 5px;
+      background-color: #46a7ad;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+}
+
+
+.quizes_list {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: calc(100% - 70px);
+      background-color: #0000004d;
+      margin: 0 auto;
+      /* padding: 10px; */
+      border-radius: 8px;
+      overflow: hidden;
+}
+
+.quizes_list table {
+      /* table-layout: fixed; */
+}
+
+.quizes_list thead {
+      width: 100%;
+      position: relative;
+      top: 0;
+}
+
+.quizes_list tbody {
+      width: 100%;
+      /* padding-top: 30px; */
+}
+
+.quizes_list th {
+      line-height: 30px;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 10px;
+      color: #b9bbbe;
+      border-bottom: 2px solid #0000005c;
+      white-space: nowrap;
+}
+
+.quizes_list td {
+      font-size: 14px;
+      font-weight: 100;
+      padding: 5px 10px;
+      border-bottom: 1px solid #0000005c;
+      white-space: nowrap;
+}

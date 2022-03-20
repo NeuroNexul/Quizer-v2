@@ -1,0 +1,141 @@
+.canvas {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+}
+
+.container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      background-color: #202225;
+}
+
+.main {
+      width: 100%;
+      max-width: 800px;
+      height: calc(100% - 70px);
+      background-color: #0000004d;
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 8px;
+      overflow: auto;
+      position: relative;
+      z-index: 3;
+}
+
+.form {
+      width: 100%;
+      height: auto;
+
+      .input {
+            width: 100%;
+
+            label {
+                  width: 100%;
+                  display: block;
+                  font-weight: 600;
+                  font-size: 14px;
+                  padding-left: 10px;
+                  margin: 3px 0;
+            }
+
+            p {
+                  width: 100%;
+                  display: block;
+                  font-weight: 600;
+                  font-size: 11px;
+                  padding-left: 10px;
+                  margin: 0px;
+            }
+
+            textarea {
+                  width: 100%;
+                  min-height: 100px;
+                  height: 100px;
+                  max-height: 400px;
+                  resize: vertical;
+                  display: block;
+                  outline: none;
+                  font-size: 18px;
+                  font-weight: 400;
+                  border: 1px solid #fff;
+                  border-radius: 8px;
+                  background-color: transparent;
+                  color: #fff;
+                  padding: 6px;
+            }
+
+            .option {
+                  padding: 10px;
+                  padding-left: 30px;
+
+                  .img {
+                        width: 30px;
+                        display: inline-block;
+                        vertical-align: top;
+                        margin-right: 10px;
+                        cursor: pointer;
+
+                        input[type="checkbox"] {
+                              cursor: pointer;
+                              width: 100%;
+                              height: 30px;
+                              position: relative;
+                              top: 5px;
+                              outline: none;
+                              border: none;
+                              background-color: #ddd;
+                              border-radius: 5px;
+                              appearance: none;
+                              -webkit-appearance: none;
+                              -moz-appearance: none;
+
+                              &:checked {
+                                    background-color: #409fd6;
+                                    background-image: url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==");
+                                    background-repeat: no-repeat;
+                                    background-size: 50%;
+                                    background-position: center;
+                              }
+                        }
+
+                        & svg:nth-child(1) {
+                              cursor: default;
+                        }
+                  }
+
+                  textarea {
+                        min-height: 136px;
+                        height: 136px;
+                        display: inline-block;
+                        width: calc(100% - 40px);
+                        vertical-align: top;
+                  }
+            }
+      }
+
+      .datePicker {
+            margin: 10px 0;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+      }
+
+      .input2 {
+            width: 100%;
+            max-width: 528px;
+            margin: 0 auto;
+      }
+}
