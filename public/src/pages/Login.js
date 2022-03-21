@@ -72,10 +72,7 @@ export default function Login(props) {
                               <div className={style.box}>
                                     <h3>Login</h3>
                                     <LoadingButton loading={loginState} variant="contained" fullWidth className={style.button} onClick={e => {
-                                          window.location.href = window.location.origin === "https://quiz-er.herokuapp.com" ?
-                                                "https://discord.com/api/oauth2/authorize?client_id=948134556664483840&redirect_uri=https%3A%2F%2Fquiz-er.herokuapp.com&response_type=code&scope=identify%20email%20guilds"
-                                                :
-                                                `https://discord.com/api/oauth2/authorize?client_id=948134556664483840&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=code&scope=identify%20email%20guilds`;
+                                          window.location.href = `https://discord.com/api/oauth2/authorize?client_id=948134556664483840&redirect_uri=${encodeURIComponent(window.location.origin)}&response_type=code&scope=identify%20email%20guilds`;
                                     }}>
                                           LOGIN WITH DISCORD
                                     </LoadingButton>
