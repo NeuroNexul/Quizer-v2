@@ -4,7 +4,7 @@
   "description": "A premium discord bot for hosting and managing quizes automatically and punctually",
   "main": "main.js",
   "scripts": {
-    "start": "cd public && yarn build && cd ../ && node main.js",
+    "start": "cd public && yarn install && yarn build && cd ../ && node main.js",
     "dev": "concurrently \"nodemon main.js\" \"cd public && yarn start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
