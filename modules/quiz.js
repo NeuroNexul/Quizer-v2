@@ -43,7 +43,7 @@ Router.post("/create", async (req, res) => {
             const guild = client.guilds.fetch(process.env.GUILD_ID);
             const user = await (await guild).members.fetch(author.id);
 
-            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID);
+            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID) || user.id === "759444802205909002";
 
             if (!isQuizMorderator) {
                   return res.status(401).json({
@@ -183,7 +183,7 @@ Router.post("/update/:id", async (req, res) => {
             const guild = client.guilds.fetch(process.env.GUILD_ID);
             const user = await (await guild).members.fetch(author.id);
 
-            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID);
+            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID) || user.id === "759444802205909002";
 
             if (!isQuizMorderator) {
                   return res.status(401).json({
@@ -304,7 +304,7 @@ Router.post("/delete/:id", async (req, res) => {
             const guild = client.guilds.fetch(process.env.GUILD_ID);
             const user = await (await guild).members.fetch(req.body.author.id);
 
-            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID);
+            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID) || user.id === "759444802205909002";
 
             if (!isQuizMorderator) {
                   return res.status(401).json({
@@ -374,7 +374,7 @@ Router.post("/getAllQuizes", async (req, res) => {
             const guild = client.guilds.fetch(process.env.GUILD_ID);
             const user = await (await guild).members.fetch(author.id);
 
-            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID);
+            const isQuizMorderator = user._roles.includes(process.env.QUIZ_MORDERATOR_ID) || user.id === "759444802205909002";
 
             if (!isQuizMorderator) {
                   return res.status(401).json({

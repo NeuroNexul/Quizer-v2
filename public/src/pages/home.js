@@ -19,11 +19,18 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import Snackbar from '@mui/material/Snackbar';
+import Slide from '@mui/material/Slide';
+import MuiAlert from '@mui/material/Alert';
 
 const darkTheme = createTheme({
       palette: {
             mode: 'dark',
       },
+});
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+      return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 
@@ -53,12 +60,27 @@ export default function Home(props) {
       const [quizes, setQuizes] = useState([]);
       const [updateQuiz, setUpdateQuiz] = useState(null);
       const [deleting, setDeleting] = useState(false);
+      const [snakeBar, setSnakeBar] = useState({
+            message: "Hello World",
+            open: false,
+            severity: "success",
+      });
 
       async function getQuizes() {
-            setDeleting(true);
-            const data = await (await axios.post("/api/quiz/getAllQuizes", { author: props.user })).data;
-            setQuizes(data.quizes);
-            setDeleting(false);
+            try {
+                  setDeleting(true);
+                  const data = await (await axios.post("/api/quiz/getAllQuizes", { author: props.user })).data;
+                  setQuizes(data.quizes);
+                  setDeleting(false);
+            } catch (err) {
+                  console.log(err);
+                  setDeleting(false);
+                  setSnakeBar({
+                        message: "Error getting quizes",
+                        open: true,
+                        severity: "error",
+                  });
+            }
       }
 
       async function deleteQuiz(id) {
@@ -67,10 +89,20 @@ export default function Home(props) {
                   setDeleting(true);
                   await axios.post("/api/quiz/delete/" + id, { author: props.user });
                   await getQuizes();
+                  setSnakeBar({
+                        message: "Quiz deleted",
+                        open: true,
+                        severity: "success",
+                  });
                   setDeleting(false);
 
             } catch (err) {
                   console.log(err);
+                  setSnakeBar({
+                        message: "Error deleting quiz",
+                        open: true,
+                        severity: "error",
+                  });
                   setDeleting(false);
             }
       }
@@ -94,6 +126,18 @@ export default function Home(props) {
                               <CircularProgress color="inherit" />
                         </Backdrop>
 
+                        <Snackbar
+                              open={snakeBar.open}
+                              onClose={(e, r) => { if (r === 'clickaway') return; setSnakeBar(prev => ({ ...prev, open: false })) }}
+                              TransitionComponent={(props) => {
+                                    return <Slide {...props} direction="right" />;
+                              }}
+                        >
+                              <Alert onClose={(e, r) => { if (r === 'clickaway') return; setSnakeBar(prev => ({ ...prev, open: false })) }} severity={snakeBar.severity} sx={{ width: '100%' }}>
+                                    {snakeBar.message}
+                              </Alert>
+                        </Snackbar>
+
                         {profile &&
                               <div className={style.profileHolder} onClick={e => { setProfile(!profile); }}>
                                     <div className={style.profile} onClick={e => { e.stopPropagation(); }}>
@@ -111,8 +155,8 @@ export default function Home(props) {
                               </div>
                         }
 
-                        {host && <Hosting deviceType={props.deviceType} host={host} setHost={setHost} oauthData={props.oauthData} user={props.user} getQuizes={getQuizes} channels={props.channels} />}
-                        {updateQuiz && <Hosting updateQuiz={updateQuiz} setUpdateQuiz={setUpdateQuiz} deviceType={props.deviceType} host={host} setHost={setHost} oauthData={props.oauthData} user={props.user} getQuizes={getQuizes} channels={props.channels} />}
+                        {host && <Hosting updateQuiz={updateQuiz} setSnakeBar={setSnakeBar} setUpdateQuiz={setUpdateQuiz} deviceType={props.deviceType} host={host} setHost={setHost} oauthData={props.oauthData} user={props.user} getQuizes={getQuizes} channels={props.channels} />}
+                        {updateQuiz && <Hosting updateQuiz={updateQuiz} setSnakeBar={setSnakeBar} setUpdateQuiz={setUpdateQuiz} deviceType={props.deviceType} host={host} setHost={setHost} oauthData={props.oauthData} user={props.user} getQuizes={getQuizes} channels={props.channels} />}
 
                         <div className={style.container}>
 
@@ -169,7 +213,7 @@ export default function Home(props) {
                                                             </TableRow>
                                                       </TableHead>
                                                       <TableBody>
-                                                            {quizes.map((row, index) => {
+                                                            {quizes?.map((row, index) => {
                                                                   return (
                                                                         <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                                                                               <TableCell>{row.number}</TableCell>

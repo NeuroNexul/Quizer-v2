@@ -47,7 +47,7 @@ app.use("/api/quiz", require("./modules/quiz"));
 app.use("/api/auth", require("./modules/auth"));
 
 app.use(express.static(path.join(__dirname, 'public', 'build')));
-app.all("*", (req, res) => {
+app.get("*", (req, res) => {
       res.sendFile(path.join(__dirname, "public", 'build', "index.html"));
 });
 

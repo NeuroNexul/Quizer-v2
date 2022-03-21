@@ -17,6 +17,7 @@ export default function Login(props) {
                   if (data.oauthData.error || data.error) {
                         props.setUser(null);
                         props.setGuilds(null);
+                        props.setChannels([]);
                         props.setOauthData(null);
                         setLoginState(false);
                         window.history.pushState({}, '', '/');
@@ -25,6 +26,7 @@ export default function Login(props) {
                   
                   props.setUser(data.user);
                   props.setGuilds(data.guilds);
+                  props.setChannels(data.channels);
                   props.setOauthData(data.oauthData);
                   window.history.pushState({}, '', '/');
                   
@@ -33,6 +35,7 @@ export default function Login(props) {
                   console.log(err);
                   props.setUser(null);
                   props.setGuilds(null);
+                  props.setChannels([]);
                   props.setOauthData(null);
                   setLoginState(false);
                   window.history.pushState({}, '', '/');
