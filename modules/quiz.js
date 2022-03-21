@@ -192,7 +192,7 @@ Router.post("/update/:id", async (req, res) => {
                   });
             }
 
-            const response = await Quizs.findOne({ _id: req.params.id });
+            let response = await Quizs.findOne({ _id: req.params.id });
 
             if (response.state > 1) {
                   return res.send(400).json({
